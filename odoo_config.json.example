@@ -1,6 +1,6 @@
 {
-  "url": "https://your-odoo-instance.com",
-  "db": "your-database-name",
-  "username": "your-username",
-  "password": "your-password-or-api-key"
-} 
+  "url": "https://nivintech.odoo.com",
+  "db": "nivintech",
+  "username": "shanmu.jul6@gmail.com",
+  "password": "0d542e66eb9bf04fa273ff7417d3913c4f85fe65"
+}
