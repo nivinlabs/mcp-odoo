@@ -397,7 +397,13 @@ def load_config():
         expanded_path = os.path.expanduser(path)
         if os.path.exists(expanded_path):
             with open(expanded_path, "r") as f:
-                return json.load(f)
+                try:
+                    return json.load(f)
+                except json.decoder.JSONDecodeError:
+                    print(f"Error loading config file: {expanded_path}", file=os.sys.stderr)
+                    raise FileNotFoundError(
+                        f"Invalid Odoo configuration file: {expanded_path}. Please ensure the file is valid JSON and contains no extra data."
+                    )
 
     raise FileNotFoundError(
         "No Odoo configuration found. Please create an odoo_config.json file or set environment variables."

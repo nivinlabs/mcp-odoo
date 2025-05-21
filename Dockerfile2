@@ -1,0 +1,15 @@
+FROM python:3.10-alpine
+
+# Install Node.js, npm, python and build tools
+RUN apk add --no-cache nodejs npm python3 py3-pip gcc musl-dev libffi-dev
+
+WORKDIR /app
+
+COPY . .
+
+RUN pip3 install --no-cache-dir mcp>=0.1.1 requests>=2.31.0 pypi-xmlrpc==2020.12.3
+RUN pip3 install --no-cache-dir .
+
+EXPOSE 8000
+
+CMD ["npx", "-y", "supergateway", "--stdio", "python3", "run_server.py"]
